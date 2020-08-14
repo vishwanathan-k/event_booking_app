@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [title]="'Booking Form'">
+      <form #bookingForm="ngForm" name="form" role="form">
+       <div class="row">
+         <div class="col-md-3">
+          <h5 style="margin-bottom: 10px;">Event Name: {{eventName}}</h5>
+          <br>
+          <app-card [cardClass]="'counter-card-1'" [blockClass]="'card-body-big'" >
+            <div class="row">
+              <div class="col-1 counter-card-icon"></div>
+              <div class="col-4  text-right">
+                <input hidden type="file" id="userprofile2" (click)="fileInput1.value = null" 
+                    value=""  #fileInput1 (change)="fileSelected1($event)" />
+                <img src ="/assets/images/user.png" style="height: 100px;cursor:pointer;" (click)="fileInput1.click()"
+                alt="User-Profile-Image"/>
+              </div>
+              <div class="col-5 counter-card-icon"></div>
+            </div>
+          </app-card>         
+         
+        </div>
+         <div class="col-md-9">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Name :</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="model.name" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Email :</label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="model.email" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Phone No :</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="phoneNo" name="phoneNo" placeholder="Phone Number" [(ngModel)]="model.phoneNo" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Number Of Seats :</label>
+            <div class="col-sm-9">
+              <select name="select" id="numberOfSeats" name="numberOfSeats" class="form-control" [(ngModel)]="model.numberOfSeats" required>
+                <option value="">Please Select</option>
+                <option *ngFor="let seate of seatesVal" value={{seate}}>
+                  {{seate}}
+              </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Name Of Attendee :</label>
+            <div class="col-sm-9">
+              <textarea name="select" id="namerOfAttendee" name="namerOfAttendee" placeholder="Name of attendee.." class="form-control" [(ngModel)]="model.namerOfAttendee" required></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-6 col-form-label">
+              <button type="button" class="btn btn-primary btn-sm btn-block"  [disabled]="!bookingForm.form.valid" (click) = "bookingSubmit()">Submit</button></label>
+            <div class="col-sm-6" style="top: 8px;">
+              <button type="button" class="btn btn-secondary btn-sm btn-block" (click)="gotoEvents()">Cancel</button></div>
+          </div>
+         </div>
+       </div>
+      </form>     
+    </app-card>
+   
+   
+  </div>
+</div>

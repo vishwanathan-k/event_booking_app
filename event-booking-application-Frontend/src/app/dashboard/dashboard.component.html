@@ -1,0 +1,48 @@
+<div class="row">
+  <!-- counter-card-1 start-->
+  <div class="col-md-12 col-xl-3" *ngFor="let item of tableData">
+    <app-card [title]="'Booking Form'">
+    <app-card [cardClass]="'counter-card-1'" [blockClass]="'card-body-big'" >
+      <div class="row">
+        <div class="col-12 counter-card-icon" style="text-align-last: center;">
+          <img src ="/assets/images/user.png" style="height: 80px;" alt="User-Profile-Image"/>
+        </div>        
+      </div>
+
+      <div class="row">       
+        <div class="col-12" style="padding-right: 5px;padding-left: 5px;">
+          <div class="counter-card-text">
+            <label style="margin-bottom: 0rem;">Event Name: {{item.name}}</label>
+          <label style="margin-bottom: 0rem;">Event Date: {{item.date}}</label>
+          <label style="margin-bottom: 0rem;">Number of Seats: {{item.numberOfSeats}}</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">       
+        <div class="col-12" style="padding-right: 5px;padding-left: 5px;text-align: center;">
+          <div class="counter-card-text">
+          <span *ngIf="item.numberOfSeats <= '22'; else numberOfSeatsNegative">
+            <a type="button" style="margin-top: 8px;" (click) ="bookNow(item.id)" class="btn btn-outline-primary btn-mini waves-effect waves-light">Book Now</a>
+          </span>
+          <ng-template #numberOfSeatsNegative>
+            <a type="button" style="margin-top: 8px;" class="btn btn-outline-danger btn-mini waves-effect waves-light">Sold</a>
+          </ng-template>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 counter-card-icon">
+          <a type="button" style="margin-top: 8px;" class="btn btn-outline-warning btn-mini waves-effect waves-light" (click) ="editEvent(item.id)"><i class="ti-pencil-alt"></i></a>
+        </div>
+        <div class="col-7  text-right">
+          <a type="button" style="margin-top: 8px;" class="btn btn-outline-danger btn-mini waves-effect waves-light" (click) ="deleteEvent(item.id)"><i class="ti-trash"></i></a>
+          </div>
+        </div>
+      
+    </app-card>
+  </app-card>
+  </div>
+
+</div>
